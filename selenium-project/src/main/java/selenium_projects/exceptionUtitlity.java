@@ -6,5 +6,4 @@ public class exceptionUtitlity extends RuntimeException{
     {
         super(message);        
     }
-
 }
