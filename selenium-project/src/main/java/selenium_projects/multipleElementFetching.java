@@ -15,23 +15,37 @@ public class multipleElementFetching {
         
         driver = new ChromeDriver();
 
-        driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
-        // driver.get("https://www.amazon.in/");
+        // driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
+        driver.get("https://www.flipkart.com/");
+        
 
         List<WebElement> listele = driver.findElements(By.tagName("a"));
 
         System.out.println(listele.size());
 
-        for(int i=0; i<listele.size(); i++)
-        {
-            String text = listele.get(i).getText();
+        // for(int i=0; i<listele.size(); i++)
+        // {
+        //     String text = listele.get(i).getText();
 
-            if(text.length()!=0)
+        //     if(text.length()!=0)
+        //     {
+        //         System.out.println(text);
+        //     }
+        // }
+
+        // to print all the attribute values
+
+        for(WebElement e:listele)
+        {
+            String hrefAttribute = e.getDomAttribute("href");
+            if (!(hrefAttribute==null)) 
             {
-                System.out.println(text);
+                System.out.println(hrefAttribute);
             }
         }
-        driver.close();
+
+
+        // driver.close();
     }
 
 }

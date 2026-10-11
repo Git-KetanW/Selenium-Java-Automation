@@ -1,5 +1,8 @@
 package selenium_projects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -71,4 +74,50 @@ public class elementsUtility {
             return false;
         }
     }
+
+     public String getAttributeValue(By locator, String attrName)
+    {
+        String attrValue = getElement(locator).getAttribute(attrName);
+        return attrValue;
+    }
+
+    public String getDomPropertyValue(By locator, String attrName)
+    {
+        String attrValue = getElement(locator).getDomProperty(attrName);
+        return attrValue;
+    }
+
+    public String getDomAttributeValue(By locator, String attrName)
+    {
+        String attrValue = getElement(locator).getDomAttribute(attrName);
+        return attrValue;
+    }
+
+    public List<WebElement> getElements(By locator)
+    {
+        List<WebElement> elementList = driver.findElements(locator);
+        return elementList;
+    }
+
+    public int getTotalElementsCount(By locator)
+    {
+        int count = getElements(locator).size();
+        return count;
+    }
+
+    public List<String> getElementsTextList(By locator)
+    {
+        List<WebElement> tL = getElements(locator);
+        List<String> textList = new ArrayList<String>();
+        for(WebElement e:tL)
+        {
+            String text = e.getText();
+            if (text.length()!=0) 
+            {
+                textList.add(text);
+            }
+        }
+        return textList;
+    }
+
 }
